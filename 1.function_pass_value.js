@@ -1,6 +1,3 @@
-
-
-
 //1.多个全局变量
 //2.建一个函数来修改和维护多个全局变量的值
 
@@ -31,6 +28,5 @@ function object_add(obj){
 }
 
 object_add(Obj);
-console.log(Obj);
-
+console.log(Obj);//均没有发生变化
 

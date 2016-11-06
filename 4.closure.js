@@ -9,10 +9,6 @@ var pet = function(name) {          //外部函数定义了一个变量"name"
 myPet = pet("Vivie");
 console.log(myPet()); 
 
-
-
-
-
 function settingCountry(country_param){
     var getName = function(){
         if(country_param){
@@ -21,9 +17,6 @@ function settingCountry(country_param){
     }
     return getName;
 }
-
-
-
 myCountry=settingCountry("zh")
 console.log(myCountry());
 myCountry=settingCountry("cn")

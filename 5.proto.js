@@ -10,8 +10,10 @@
  */
 function test(){};
 var a = new test();
-console.log(a.__proto__)	 	 //test{}
-console.log(test.prototype)      //test{}
+console.log("Object.prototype ===",Object.prototype);//{}
+console.log("Object.__proto__ ===",Object.__proto__);//[Function]
+console.log("a.__proto__===",a.__proto__)	 	 //test{}
+console.log("test.prototype===",test.prototype)      //test{}
 console.log(a.prototype)         //undefined
 console.log(a.__proto__=== test.prototype) //true
 
@@ -20,6 +22,7 @@ console.log(a.__proto__=== test.prototype) //true
  * -----------------
  * 原型对象prototype都有一个预定义的constructor属性，用来引用它的函数对象。这是一种循环引用
  */
+console.log("2-----------------------")
 console.log(test.prototype.constructor)         //[Function:test]
 console.log(Function.prototype.constructor)     //[Function:Function]
 console.log(Object.prototype.constructor)       //[Function:Object]

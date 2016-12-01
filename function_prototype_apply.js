@@ -45,7 +45,7 @@ console.log(T)
 var circle = {x:1,y:1,r:1}
 p.move.apply(circle,[2,1])
 console.log("1,after applay the circle method")
-console.log(p)
+console.log("p:",p)
 console.log("2,------------------------------")
 
 p.move.call(circle,{x:3,y:2,r:1})

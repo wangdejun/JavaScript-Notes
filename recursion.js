@@ -26,7 +26,6 @@
 
 // console.log("wangdejun".charAt("wangdejun".length-1))
 
-
 function isPalindrome(text){
 	if(text.length <=1){
 		return true

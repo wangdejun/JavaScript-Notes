@@ -8,3 +8,6 @@ console.log(a[1])
 console.log(a[1000])
 
 
+var a = []
+a["1"] = 1
+a["name"] = "wangdejun"

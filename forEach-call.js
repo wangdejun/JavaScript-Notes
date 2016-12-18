@@ -7,6 +7,5 @@ function forEach(list,callback){
 var weapons = ["guns","canons","knife"]
 
 forEach(weapons,function(index){
-
     console.log(index,weapons[index])
 })

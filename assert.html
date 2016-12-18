@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>
+			Test Suiter
+		</title>
+		<script>
+			function assert(value,desc){
+				var li = document.createElement("li");
+				li.className = value ? "pass":"fail";
+				li.appendChild(document.createTextNode(desc));
+				document.getElementById("results").appendChild(li);
+			}
+
+			var a = 12
+			var b = 12
+
+			window.onload = function(){
+				assert(true,"The test suiter is running")
+				assert(false,"Fail!")
+				assert(a==12,"a value is Good!")
+				assert(b!=12,"b value is wrong")
+			}
+		</script>
+		<style>
+		 	#results li.pass{
+		 		color:green;
+		 	}
+		 	#results li.fail{
+		 		color:red;
+		 	}
+		</style>
+	</head>
+	<body>
+		<ul id= "results"> </ul>
+	</body>
+</html>

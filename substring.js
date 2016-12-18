@@ -12,6 +12,7 @@
 // Array.prototype.join()
 
 function myReplace(str, before, after) {
+  var a = Date.now()
   var arr = [];
   arr = str.split(" ");
   for(var i=0;i<str.length;i++){
@@ -27,6 +28,8 @@ function myReplace(str, before, after) {
   }
   str = arr.join(" ");
   return str;
+  var b=Date.now()
+  console.log("Time:",b-a)
 }
 
 

@@ -3,7 +3,6 @@ function forEach(list,callback){
         callback.call(list[n],n)
     }
 }
-
 var weapons = ["guns","canons","knife"]
 
 forEach(weapons,function(index){

@@ -12,7 +12,6 @@
 // Array.prototype.join()
 
 function myReplace(str, before, after) {
-  var a = Date.now()
   var arr = [];
   arr = str.split(" ");
   for(var i=0;i<str.length;i++){
@@ -28,9 +27,26 @@ function myReplace(str, before, after) {
   }
   str = arr.join(" ");
   return str;
-  var b=Date.now()
-  console.log("Time:",b-a)
 }
+console.log(myReplace("He is Sleeping on the couch", "Sleeping", "sitting"))
 
+(function(){
+  this.myReplace = function(str,before,after){
+    var arr = [];
+    arr = str.split(" ");
+    for(var i = 0;i<str.length;i++){
+      var _case = arr[i].split("")[0];
+      if(_case.toUpperCase()==_case){
+        arr[i]=after.substring(0,1).toUpperCase + after.substring(1,after.length)//取前不取后
+      }else{
+        arr[i]=after;
+      }
+    }
+  }
+  //重新把数组组合成为一个字符串
+  str = arr.join(" ");
+  return str;
+})()
 
 console.log(myReplace("He is Sleeping on the couch", "Sleeping", "sitting"))
+

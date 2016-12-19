@@ -8,7 +8,6 @@ console.log(
 	})(5)
 );
 
-
 //同时考察(function(){})()这种用法
 console.log(
 	(function(w){

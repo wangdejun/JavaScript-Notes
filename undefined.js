@@ -15,8 +15,14 @@ console.log(undefined===null)
 a = NaN
 console.log(typeof(a))
 
-a = function(){}.constructor
-console.log(typeof(a))
+a = function(){}.constructor;
+console.log(typeof(a));
 
 a = Date().constructor;
-console.log(typeof(a))
+console.log(typeof(a));
+
+a = String(Date())
+console.log(a)
+
+a = "11.6"
+console.log(parseInt(a))

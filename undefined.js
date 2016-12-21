@@ -6,3 +6,6 @@ console.log(typeof(a))
 a = null;
 console.log(typeof(a))
 //null是未引用，也是一个对象
+
+console.log(undefined==null)
+console.log(undefined===null)

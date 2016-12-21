@@ -17,3 +17,6 @@ console.log(typeof(a))
 
 a = function(){}.constructor
 console.log(typeof(a))
+
+a = Date().constructor;
+console.log(typeof(a))

@@ -26,3 +26,18 @@ console.log(a)
 
 a = "11.6"
 console.log(parseInt(a))
+
+a = Number(true)
+console.log(a)
+a = Number(false)
+console.log(a)
+
+a= 1.253434454456
+console.log(a.toString())
+console.log(a.toFixed(2))
+//把数字格式化为指定的长度，注意是四舍五入
+console.log(a.toPrecision(2))
+
+
+
+

@@ -168,11 +168,13 @@
   };
 
   // Collection Functions
+  // 集合函数
   // --------------------
 
   // The cornerstone, an `each` implementation, aka `forEach`.
   // Handles raw objects in addition to array-likes. Treats all
   // sparse array-likes as if they were dense.
+
   _.each = _.forEach = function(obj, iteratee, context) {
     iteratee = optimizeCb(iteratee, context);
     var i, length;
@@ -203,6 +205,7 @@
   };
 
   // Create a reducing function iterating left or right.
+  // 创建一个reduce函数从左遍历到右
   var createReduce = function(dir) {
     // Wrap code that reassigns argument variables in a separate function than
     // the one that accesses `arguments.length` to avoid a perf hit. (#1991)
@@ -228,6 +231,7 @@
   };
 
   // **Reduce** builds up a single result from a list of values, aka `inject`,
+  // **Reduce** 从一个列里的值抽做成一个值
   // or `foldl`.
   _.reduce = _.foldl = _.inject = createReduce(1);
 
@@ -408,6 +412,8 @@
   };
 
   // Sort the object's values by a criterion produced by an iteratee.
+  // 为一个序列的值排序
+
   _.sortBy = function(obj, iteratee, context) {
     var index = 0;
     iteratee = cb(iteratee, context);
@@ -444,7 +450,11 @@
   // Groups the object's values by a criterion. Pass either a string attribute
   // to group by, or a function that returns the criterion.
   _.groupBy = group(function(result, value, key) {
-    if (_.has(result, key)) result[key].push(value); else result[key] = [value];
+    if (_.has(result, key)){ 
+      result[key].push(value);
+    }else{
+      result[key] = [value];
+    }
   });
 
   // Indexes the object's values by a criterion, similar to `groupBy`, but for
@@ -486,6 +496,7 @@
   }, true);
 
   // Array Functions
+  // 数组函数
   // ---------------
 
   // Get the first element of an array. Passing **n** will return the first N
@@ -547,9 +558,15 @@
   };
 
   // Flatten out an array, either recursively (by default), or just one level.
+  // 处理一个数组的方法，把一个数组拍平，采用递归的方法
   _.flatten = function(array, shallow) {
     return flatten(array, shallow, false);
   };
+
+  //绝妙方法
+  // _.flatten = function(array,shallow){
+  //   return flatten(array,shallow,false);
+  // }
 
   // Return a version of the array that does not contain the specified value(s).
   _.without = restArgs(function(array, otherArrays) {
@@ -565,7 +582,9 @@
       iteratee = isSorted;
       isSorted = false;
     }
-    if (iteratee != null) iteratee = cb(iteratee, context);
+    if (iteratee != null) {
+      iteratee = cb(iteratee, context);
+    }
     var result = [];
     var seen = [];
     for (var i = 0, length = getLength(array); i < length; i++) {
@@ -611,6 +630,7 @@
 
   // Take the difference between one array and a number of other arrays.
   // Only the elements present in just the first array will remain.
+  // 获取一个数组和另一个数组的不同之处，结果是返回第一个数组中有，而第二个数组中没有的元素  
   _.difference = restArgs(function(array, rest) {
     rest = flatten(rest, true, true);
     return _.filter(array, function(value){
@@ -618,7 +638,15 @@
     });
   });
 
+  // _.difference = restArgs(function(array,rest){
+  //   rest = flatten(rest,true,true);
+  //   return _.filter(array,function(value){
+  //     return !_.contains(rest,value)
+  //   })
+  // })
+
   // Complement of _.zip. Unzip accepts an array of arrays and groups
+  // 接收一组数组的数组作为参数
   // each array's elements on shared indices.
   _.unzip = function(array) {
     var length = array && _.max(array, getLength).length || 0;
@@ -629,14 +657,30 @@
     }
     return result;
   };
+   
+ 
+  // _.unzip = function(array){
+  //   var length = array && _.max(array,getLength).length || 0;
+  //   var result = Array(length);
+  //   for(var index = 0;index<length;index++){
+  //     result[index] = _.pluck(array,index)
+  //   }
+  //   return result;
+  // }
 
   // Zip together multiple lists into a single array -- elements that share
   // an index go together.
   _.zip = restArgs(_.unzip);
 
+
   // Converts lists into objects. Pass either a single array of `[key, value]`
   // pairs, or two parallel arrays of the same length -- one of keys, and one of
   // the corresponding values. Passing by pairs is the reverse of _.pairs.
+  /**
+   * 相当牛逼的一个功能；把一个数组转化为一个对象；
+   * 传入的参数可以是一个键值对组成的list,
+   * 也可以是两个list,但是这两个list的长度必须一样。
+   */
   _.object = function(list, values) {
     var result = {};
     for (var i = 0, length = getLength(list); i < length; i++) {
@@ -648,8 +692,25 @@
     }
     return result;
   };
+/**
+ * copy it
+ */
+  // _.object = function(list,values){
+  //   var result = {};
+  //   for(var i=0,length = getLength(list);i<length;i++){
+  //     if(values){
+  //       result[list[i]]=values[i];
+  //     }else{
+  //       result[list[i][0]] = list[i][1];
+  //     }
+  //   }
+  //   return result;
+  // }
 
   // Generator function to create the findIndex and findLastIndex functions.
+  /**
+   * Generator函数
+   */
   var createPredicateIndexFinder = function(dir) {
     return function(array, predicate, context) {
       predicate = cb(predicate, context);

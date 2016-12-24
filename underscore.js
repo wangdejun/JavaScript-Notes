@@ -4,7 +4,6 @@
 //     Underscore may be freely distributed under the MIT license.
 
 (function() {
-
   // Baseline setup
   // --------------
 
@@ -45,6 +44,7 @@
   };
 
   // Export the Underscore object for **Node.js**, with
+  // 为Node.js这样的导出对象
   // backwards-compatibility for their old module API. If we're in
   // the browser, add `_` as a global object.
   // (`nodeType` is checked to ensure that `module`
@@ -59,6 +59,7 @@
   }
 
   // Current version.
+  // 当前版本
   _.VERSION = '1.8.3';
 
   // Internal function that returns an efficient (for current engines) version

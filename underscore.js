@@ -729,6 +729,9 @@
 
   // Use a comparator function to figure out the smallest index at which
   // an object should be inserted so as to maintain order. Uses binary search.
+  /**
+   * 使用比较函数发现一个最小的插入位，一个对象应该插入到这个插入位而不是其他的位，使用二分查找
+   */
   _.sortedIndex = function(array, obj, iteratee, context) {
     iteratee = cb(iteratee, context, 1);
     var value = iteratee(obj);
@@ -740,7 +743,26 @@
     return low;
   };
 
+  // _sortedIndex = funtion(array,obj,iteratee,context){
+  //   iteratee = cb(iteratee,context,1);
+  //   var value = iteratee(obj);
+  //   var low = 0,high = getLength(array);
+  //   while(low<high){
+  //     var mid = Math.floor((low+high)/2);
+  //     if(iteratee(array[mid])<value){
+  //       low = mid + 1;
+  //     }else{
+  //       high = mid;
+  //     }
+  //     return low;
+  //   }
+  // }
+
   // Generator function to create the indexOf and lastIndexOf functions.
+  /**
+   * 生成器 函数，生成indexOf函数 和 lastIndexOf函数功能
+   */
+
   var createIndexFinder = function(dir, predicateFind, sortedIndex) {
     return function(array, item, idx) {
       var i = 0, length = getLength(array);
@@ -764,6 +786,7 @@
       return -1;
     };
   };
+
 
   // Return the position of the first occurrence of an item in an array,
   // or -1 if the item is not included in the array.

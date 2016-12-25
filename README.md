@@ -1,9 +1,10 @@
 
-###Intro to Js
+### Intro to Js
 * ECMAScript
 * DOM(文档对象模型：提供访问网页，操作网页内容的方法和API接口)
 * BOM(提供与浏览器交互的方法和接口)
-###在html中使用javascript
+
+### 在html中使用javascript
 * 建议使用外部引用js文件，理由有2ge:
     * 可维护性
         * 一般认为这能够使开发者集中精力维护js文件，在不动Html文件的情况下

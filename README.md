@@ -52,7 +52,31 @@
 * 判断 Array
     * instanceof 操作符
     * Array.isArray(["wang","de"]) 方法，如果传入的参数是数组，就return true;
-    
+* Array 方法
+    * 栈方法
+        * .push()
+        * .pop()
+    * 队列方法
+        * .shift()
+        * .unshift()
+    * 重排序方法 
+        * .sort()  
+        * .sort(compare)
+        * .reverse()
+    * 其他操作方法
+        * .splice()
+    * 位置方法
+        * .indexOf()
+        * .lastIndexOf()
+    * 迭代方法
+        * every()
+        * filter()
+        * forEach()
+        * map()
+        * some()
+    * 归并方法
+        * reduce()
+        
 
 
 

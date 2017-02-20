@@ -1,10 +1,12 @@
 ///设置cookie   
+///cookie名字，值，时效时间
 function setCookie(NameOfCookie, value, expiredays){
     var ExpireDate = new Date ();   
     ExpireDate.setTime(ExpireDate.getTime() + (expiredays * 24 * 3600 * 1000));
     document.cookie = NameOfCookie + "=" + escape(value) + ((expiredays == null) ? "" : "; expires=" + ExpireDate.toGMTString());   
 }   
 //获取cookie值   
+//获取cookie值，参数是cookie
 function getCookie(NameOfCookie){
     if (document.cookie.length > 0){
         var begin = document.cookie.indexOf(NameOfCookie+"=");   

@@ -10,6 +10,7 @@ function Circle(x,y,r){
 	Point.call(this,x,y);
 	this.radius = r;
 }
+
 Circle.prototype = new Point();
 Circle.prototype.constructor = Circle;
 

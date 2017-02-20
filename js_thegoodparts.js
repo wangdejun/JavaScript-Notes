@@ -4,5 +4,4 @@ myObject.double = function(){
 		that.value = add(that.value,that.value);
 	};
 	helper();
-
 }

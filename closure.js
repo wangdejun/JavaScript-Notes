@@ -1,7 +1,7 @@
-var outervalue = "wangdejun1"
+var outervalue = "myname1"
 
 function wrap(){
-	var outervalue1 = "wangdejun2"
+	var outervalue1 = "myname2"
 	function outerFunction(){
 		console.log(outervalue);
 		console.log(outervalue1)
@@ -19,7 +19,7 @@ console.log(name)
 
 var outer = "wang"
 function wrapper(){
-	outer1 = "wangdejun"
+	outer1 = "myname"
 	function outerFunction1(){
 		console.log(outer)
 		console.log(outer1)

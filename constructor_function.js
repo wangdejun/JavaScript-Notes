@@ -1,3 +1,5 @@
+//构造函数
+
 function person(firstname,lastname,age,eyecolor){
 	this.firstname = firstname;
 	this.lastname = lastname;
@@ -5,11 +7,12 @@ function person(firstname,lastname,age,eyecolor){
 	this.eyecolor = eyecolor;
 
 	this.changeName = changeName;
+	//构造函数内部定义一个changeName()的成员函数；
 	function changeName(name){
 		this.lastname = name
 	}
 }
-
+//使用构造函数构造一个实例
 var herFather = new person("John","Doe",50,"blue")
 var herMather = new person("Sally","Rally",48,"green")
 

@@ -4,11 +4,11 @@
 		var a = 2;
 		console.log(a+x)
 	}
-})()
+})();
 
 (function(){
 	this.b = function(x){
 		var a = 4;
 		console.log(a+x)
 	}
-})()
+})();

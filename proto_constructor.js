@@ -3,6 +3,7 @@
  * 使用原型来构造对象
  * 新对象通过原型链来共享原型上的方法和变量
  */
+//创建了一个圆形
 var landRover = {
 	name:'landRover',
 	start:function(){

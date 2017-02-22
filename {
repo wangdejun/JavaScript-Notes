@@ -1,0 +1,11 @@
+{
+    "aps": {
+        "alert": "This is some fancy message.",
+        "badge": 1,
+        "sound": "default",
+		"mutable-content": "1"
+    },
+    "attachments_cover": "https://d30yjgnquo6i6z.cloudfront.net/umedia/10488s",
+    "typ": "blog",
+    "target": ""
+}

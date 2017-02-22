@@ -110,12 +110,12 @@
                     }
                 }
             },
-
             debug: false // enable debug
-        };
+        };//here default value done!
+
 
     /*
-     * Waterfall constructor
+     * Waterfall constructor，瀑布流构造函数
      */
     function Waterfall(element, options) {
         this.$element = $(element);
@@ -123,7 +123,7 @@
         this.colHeightArray = []; // columns height array
         this.styleQueue = [];
 
-        this._init();
+        this._init();//new 对象实例化的时候进行初始化，_init()一般是私有函数的写法，表明不是对外暴露的接口interface
     }
 
 

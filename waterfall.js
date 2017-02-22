@@ -22,8 +22,8 @@
         //default values settings if not changed by the developers
         defaults = {
             itemCls: 'waterfall-item',  // the brick element class
-            prefix: 'waterfall', // the waterfall elements prefix
-            fitWidth: true, // fit the parent element width
+            prefix: 'waterfall', // the waterfall elements prefix，前缀
+            fitWidth: true, // fit the parent element width，是否适配父元素
             colWidth: 240,  // column width
             gutterWidth: 10, // the brick element horizontal gutter
             gutterHeight: 10, // the brick element vertical gutter
@@ -92,8 +92,8 @@
                 },
 
                 /*
-                 * render data
-                 * @param {String} data
+                 * render data渲染数据
+                 * @param {String} data，参数一，数据类型
                  * @param {String} dataType , "json", "jsonp", "html"
                  */
                 renderData: function (data, dataType) {

@@ -10,16 +10,16 @@ var pet = function(name) {
 myPet = pet("Vivie");
 console.log(myPet()); 
 
-// function settingCountry(country_param){
-//     var getName = function(){
-//         if(country_param){
-//             return country_param
-//         }
-//     }
-//     return getName;
-// }
-// myCountry=settingCountry("zh")
-// console.log(myCountry());
-// myCountry=settingCountry("cn")
-// console.log(myCountry());
-// console.log(myCountry());
+function settingCountry(country_param){
+    var getName = function(){
+        if(country_param){
+            return country_param
+        }
+    }
+    return getName;
+}
+myCountry=settingCountry("zh")
+console.log(myCountry());
+myCountry=settingCountry("cn")
+console.log(myCountry());
+console.log(myCountry());

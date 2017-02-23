@@ -1,4 +1,4 @@
-/*!
+/*
  * waterfall
  * 瀑布流插件库，学习一般插件库的源码是怎么写的
  * http://wlog.cn/waterfall/
@@ -97,22 +97,22 @@
                  * @param {String} dataType , "json", "jsonp", "html"
                  */
                 renderData: function (data, dataType) {
+                    //注意这种写法
                     var tpl,
                         template;
 
                     if ( dataType === 'json' ||  dataType === 'jsonp'  ) { // json or jsonp format
                         tpl = $('#waterfall-tpl').html();
                         template = Handlebars.compile(tpl);
-
                         return template(data);
-                    } else { // html format
+                    } else { 
+                        // html format
                         return data;
                     }
                 }
             },
             debug: false // enable debug
         };//here default value done!
-
 
     /*
      * Waterfall constructor，瀑布流构造函数
@@ -132,7 +132,7 @@
      * ------------------------------
      * _debug()
      * _init()
-     * _initContainer()
+     * _initContainer()等
      */
     Waterfall.prototype = {
         constructor: Waterfall,
@@ -210,7 +210,6 @@
             this.$message = $('#' + prefix + '-message');
         },
 
-
         /**
          * get columns
          */
@@ -241,7 +240,6 @@
             this.cols = this._getColumns();
         },
 
-
         /*
          * get items
          */
@@ -252,7 +250,6 @@
 
             return $items;
         },
-
 
         /*
          * reset columns height array
@@ -323,8 +320,6 @@
                 callback.call( $items );
             }
         },
-
-
         /*
          * relayout
          */

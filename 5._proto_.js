@@ -1,7 +1,7 @@
 /**
  * 对象的__proto__和prototype之间的区别
  * ---------------------------
- * prototype 每一个函数创建之后都有一个名字为prototype的属性，这个属性指向函数的原型对象。（
+ * prototype 每一个函数创建之后都有一个名字为prototype的属性，这个属性指向函数的原型对象。
  * 通过Function.prototype.bind方法构造出来的函数是个例外，它没有prototype属性）
  * Js中的任意对象都有一个内置属性[prototype],在ES5之前没有标准的方法访问这个内置属性，但是大
  * 多数浏览器支持通过proto来访问。ES5中有了对这个内置属性标准的Get方法Object.getPrototypeOf()

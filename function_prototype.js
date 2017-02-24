@@ -1,5 +1,5 @@
+//构造函数的prototype
 function Ninja(){}
-
 Ninja.prototype.swingSword = function(){
 	return true;
 }

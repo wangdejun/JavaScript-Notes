@@ -1,4 +1,4 @@
-//构造函数
+//构造函数constructor,JS通过构造函数来构造对象，实现继承（原型链）
 
 function person(firstname,lastname,age,eyecolor){
 	this.firstname = firstname;

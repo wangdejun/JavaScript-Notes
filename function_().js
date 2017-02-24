@@ -1,3 +1,4 @@
+//作用域
 (function(){
 	this.test = function(x){
 		return x

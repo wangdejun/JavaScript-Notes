@@ -1,35 +1,5 @@
-/**
- * ajax(type,url,data,cache)
- * -
- * 
 function myajax(type,url,data,cache){
-	if(cache == null){
-		cache = true;
-	}else{
-		cache = false;
-	}
-	if(typeof(data)=='undefined') 
-		data = new Object();
-	data.csrfmiddlewaretoken = csrftoken;
-	data.fromweb = 1;
-	$.ajax({
-		type:type,
-		url:url,
-		cache:cache,
-		data:data,
-		succecss:function(msg){
-			emajax(msg);
-		},
-		error:function(request,status,error){
-			emajaxerr(request);
-		},
-		contentType:'application/x-www-form-urlencoded',
-	});
-}
- */
-
-
-function myajax(type,url,data,cache){//显式地声明myajax函数封装本站所有的myajax函数
+	//显式地声明myajax函数封装本站所有的myajax函数
 	if(cache==null){
 		cache = true;
 	}else{

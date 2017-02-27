@@ -545,7 +545,6 @@
                 newCols = this._getColumns(); // new columns
 
             if ( newCols !== cols || this.options.align !== 'left' ) {
-                //this._debug('event', 'resizing ...');
                 this.options.state.isResizing = true;
                 this.cols = newCols; // update columns
                 this.reLayout(); // relayout
@@ -568,7 +567,6 @@
             });
         }
     };
-
 
     $.fn[pluginName] = function(options) {
         if ( typeof options === 'string' ) { // plugin method
@@ -597,26 +595,20 @@
                 }
             });
         }
-
         return this;
     };
 
 }( jQuery, window, document));
 
 
-
 /*!
  * jQuery imagesLoaded plugin v2.1.2
- * JQuery 图片加载插件 v2.1.2
  * http://github.com/desandro/imagesloaded
- *
  * MIT License. by Paul Irish et al.
  */
 
 ;(function($, undefined) {
     'use strict';
-
-    // blank image data-uri bypasses webkit log warning (thx doug jones)
     var BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 
     $.fn.imagesLoaded = function( callback ) {
@@ -638,7 +630,7 @@
                 }
             });
         }
-        //声明加载完毕函数
+        
         function doneLoading() {
             var $proper = $(proper),
                 $broken = $(broken);

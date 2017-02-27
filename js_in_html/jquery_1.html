@@ -23,6 +23,10 @@
             <li>哈哈，这是第二个测试文件</li>
             <li>哈哈，这是第二个测试文件</li>
         </ul>
+        <ul id="test_5" style="position:absolute;border:1px solid red;left:0px;top:200px;">
+            <li>哈哈，这是第二个测试文件</li>
+            <li>哈哈，这是第二个测试文件</li>
+        </ul>
         <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <script>
             window.onload=function(){
@@ -44,7 +48,7 @@
                     .css({"backgroundColor":"#ccc","font-weight":"900"})
                     .css("border","1px solid rgba(200,0,200,0.4)");
             })
-
+            //jquery toggle(),slideToggle(),and fadeToggle()
             $().ready(function(){
                 $("#trigger_toggle1").bind("click",function(){
                     $(".test_4").toggle(100);
@@ -54,6 +58,13 @@
                 });
                 $("#trigger_toggle3").bind("click",function(){
                     $(".test_4").fadeToggle(100);
+                });
+            })
+
+            $().ready(function(){
+                $("#test_5").bind("click",function(){
+                    alert($(this).get(0));
+                    $("#test_5").animate({left : "+=500px;"},300)
                 });
             })
         </script>

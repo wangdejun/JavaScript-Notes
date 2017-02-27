@@ -1,3 +1,6 @@
+/**
+ * callee()
+ */
 //返回匿名函数本身，常用于实现阶乘递归
 console.log(
 	(function(i){

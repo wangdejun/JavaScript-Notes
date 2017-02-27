@@ -1,22 +1,5 @@
-/*
- * waterfall
- * 瀑布流插件库，学习一般插件库的源码是怎么写的
- * http://wlog.cn/waterfall/
- *
- * Copyright (c) 2013 bingdian
- * Licensed under the MIT license.
- */
-/*global Handlebars: false, console: false */
-
 ;(function( $, window, document, undefined ) {
-    /**
-     * 'use strict'使用严格模式下，定义全局变量会报错？
-     */
     'use strict';
-
-    /*
-     * defaults
-     */
     var $window = $(window),
         pluginName = 'waterfall',
         //default values settings if not changed by the developers
@@ -32,44 +15,38 @@
             maxCol: undefined, // max columns, if undefined,max columns is infinite
             maxPage: undefined, // max page, if undefined,max page is infinite
             bufferPixel: -50, // decrease this number if you want scroll to fire quicker
-            containerStyle: { // the waterfall container style
-                position: 'relative'
-            },
+            containerStyle: { position: 'relative'},// the waterfall container style
             resizable: true, // triggers layout when browser window is resized
             isFadeIn: false, // fadein effect on loading
             isAnimated: false, // triggers animate when browser window is resized
-            animationOptions: { // animation options
-            },
+            animationOptions: {}, // animation options
             isAutoPrefill: true,  // When the document is smaller than the window, load data until the document is larger
             checkImagesLoaded: true, // triggers layout when images loaded. Suggest false
             path: undefined, // Either parts of a URL as an array (e.g. ["/popular/page/", "/"] => "/popular/page/1/" or a function that takes in the page number and returns a URL(e.g. function(page) { return '/populr/page/' + page; } => "/popular/page/1/")
             dataType: 'json', // json, jsonp, html
             params: {}, // params,{type: "popular", tags: "travel", format: "json"} => "type=popular&tags=travel&format=json"
             headers: {}, // headers variable that gets passed to jQuery.ajax()
-
-            loadingMsg: '<div style="text-align:center;padding:10px 0; color:#999;"><img src="data:image/gif;base64,R0lGODlhEAALAPQAAP///zMzM+Li4tra2u7u7jk5OTMzM1hYWJubm4CAgMjIyE9PT29vb6KiooODg8vLy1JSUjc3N3Jycuvr6+Dg4Pb29mBgYOPj4/X19cXFxbOzs9XV1fHx8TMzMzMzMzMzMyH5BAkLAAAAIf4aQ3JlYXRlZCB3aXRoIGFqYXhsb2FkLmluZm8AIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAEAALAAAFLSAgjmRpnqSgCuLKAq5AEIM4zDVw03ve27ifDgfkEYe04kDIDC5zrtYKRa2WQgAh+QQJCwAAACwAAAAAEAALAAAFJGBhGAVgnqhpHIeRvsDawqns0qeN5+y967tYLyicBYE7EYkYAgAh+QQJCwAAACwAAAAAEAALAAAFNiAgjothLOOIJAkiGgxjpGKiKMkbz7SN6zIawJcDwIK9W/HISxGBzdHTuBNOmcJVCyoUlk7CEAAh+QQJCwAAACwAAAAAEAALAAAFNSAgjqQIRRFUAo3jNGIkSdHqPI8Tz3V55zuaDacDyIQ+YrBH+hWPzJFzOQQaeavWi7oqnVIhACH5BAkLAAAALAAAAAAQAAsAAAUyICCOZGme1rJY5kRRk7hI0mJSVUXJtF3iOl7tltsBZsNfUegjAY3I5sgFY55KqdX1GgIAIfkECQsAAAAsAAAAABAACwAABTcgII5kaZ4kcV2EqLJipmnZhWGXaOOitm2aXQ4g7P2Ct2ER4AMul00kj5g0Al8tADY2y6C+4FIIACH5BAkLAAAALAAAAAAQAAsAAAUvICCOZGme5ERRk6iy7qpyHCVStA3gNa/7txxwlwv2isSacYUc+l4tADQGQ1mvpBAAIfkECQsAAAAsAAAAABAACwAABS8gII5kaZ7kRFGTqLLuqnIcJVK0DeA1r/u3HHCXC/aKxJpxhRz6Xi0ANAZDWa+kEAA7" alt=""><br />Loading...</div>', // loading html
-
+            loadingMsg: '<div style="text-align:center;padding:10px 0; color:#999;"><img src="data:image/gif;base64,R0lGODlhEAALAPQAAP///zMzM+Li4tra2u7u7jk5OTMzM1hYWJubm4CAgMjIyE9PT29vb6KiooODg8vLy1JSUjc3N3Jycuvr6+Dg4Pb29mBgYOPj4/X19cXFxbOzs9XV1fHx8TMzMzMzMzMzMyH5BAkLAAAAIf4aQ3JlYXRlZCB3aXRoIGFqYXhsb2FkLmluZm8AIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAEAALAAAFLSAgjmRpnqSgCuLKAq5AEIM4zDVw03ve27ifDgfkEYe04kDIDC5zrtYKRa2WQgAh+QQJCwAAACwAAAAAEAALAAAFJGBhGAVgnqhpHIeRvsDawqns0qeN5+y967tYLyicBYE7EYkYAgAh+QQJCwAAACwAAAAAEAALAAAFNiAgjothLOOIJAkiGgxjpGKiKMkbz7SN6zIawJcDwIK9W/HISxGBzdHTuBNOmcJVCyoUlk7CEAAh+QQJCwAAACwAAAAAEAALAAAFNSAgjqQIRRFUAo3jNGIkSdHqPI8Tz3V55zuaDacDyIQ+YrBH+hWPzJFzOQQaeavWi7oqnVIhACH5BAkLAAAALAAAAAAQAAsAAAUyICCOZGme1rJY5kRRk7hI0mJSVUXJtF3iOl7tltsBZsNfUegjAY3I5sgFY55KqdX1GgIAIfkECQsAAAAsAAAAABAACwAABTcgII5kaZ4kcV2EqLJipmnZhWGXaOOitm2aXQ4g7P2Ct2ER4AMul00kj5g0Al8tADY2y6C+4FIIACH5BAkLAAAALAAAAAAQAAsAAAUvICCOZGme5ERRk6iy7qpyHCVStA3gNa/7txxwlwv2isSacYUc+l4tADQGQ1mvpBAAIfkECQsAAAAsAAAAABAACwAABS8gII5kaZ7kRFGTqLLuqnIcJVK0DeA1r/u3HHCXC/aKxJpxhRz6Xi0ANAZDWa+kEAA7" alt=""><br />Loading...</div>',
             state: {
                 isDuringAjax: false,
                 isProcessingData: false,
                 isResizing: false,
                 isPause: false,
-                curPage: 1 // cur page
+                curPage: 1
             },
 
             // callbacks
             callbacks: {
                 /*
-                 * loading start开始加载
+                 * loading start
                  * @param {Object} loading $('#waterfall-loading')
                  */
                 loadingStart: function($loading) {
                     $loading.show();
-                    //console.log('loading', 'start');
                 },
 
                 /*
-                 * loading finished加载完毕
+                 * loading finished
                  * @param {Object} loading $('#waterfall-loading'),the params is a object
                  * @param {Boolean} isBeyondMaxPage
                  */
@@ -82,9 +59,9 @@
                         $loading.remove();
                     }
                 },
-
                 /*
                  * loading error
+                 * ----------------------------------
                  * @param {String} xhr , "end" "error"
                  */
                 loadingError: function($message, xhr) {
@@ -92,27 +69,25 @@
                 },
 
                 /*
-                 * render data渲染数据
+                 * render data
+                 * ----------------------------------
                  * @param {String} data，参数一，数据类型
                  * @param {String} dataType , "json", "jsonp", "html"
                  */
                 renderData: function (data, dataType) {
-                    //注意这种写法
                     var tpl,
                         template;
-
-                    if ( dataType === 'json' ||  dataType === 'jsonp'  ) { // json or jsonp format
+                    if ( dataType === 'json' ||  dataType === 'jsonp'  ) {
                         tpl = $('#waterfall-tpl').html();
                         template = Handlebars.compile(tpl);
                         return template(data);
-                    } else { 
-                        // html format
+                    } else {
                         return data;
                     }
                 }
             },
-            debug: false // enable debug
-        };//here default value done!
+            debug: false
+        };
 
     /*
      * Waterfall constructor，瀑布流构造函数
@@ -120,10 +95,8 @@
     function Waterfall(element, options) {
         this.$element = $(element);
         this.options = $.extend(true, {}, defaults, options);
-        this.colHeightArray = []; // columns height array
+        this.colHeightArray = [];
         this.styleQueue = [];
-        
-        //new 对象实例化的时候进行初始化，_init()一般是私有函数的写法，表明不是对外暴露的接口interface
         this._init();
     }
 
@@ -137,12 +110,10 @@
     Waterfall.prototype = {
         constructor: Waterfall,
 
-        // Console log wrapper
         _debug: function () {
             if ( true !== this.options.debug ) {
                 return;
             }
-
             if (typeof console !== 'undefined' && typeof console.log === 'function') {
                 // Modern browsers
                 // Single argument, which is a string
@@ -157,7 +128,6 @@
             }
         },
 
-
         /*
          * _init
          * @callback {Object Function } and when instance is triggered again -> $element.waterfall()
@@ -170,22 +140,14 @@
             this._initContainer();
             this._resetColumnsHeightArray();
             this.reLayout( callback );
-
-            /*if ( !path ) {
-                this._debug('Invalid path');
-                return;
-            }*/
-
-            // auto prefill
+            
             if ( options.isAutoPrefill ) {
                 this._prefill();
             }
-
             // bind resize
             if ( options.resizable ) {
                 this._doResize();
             }
-
             // bind scroll
             this._doScroll();
         },
@@ -201,8 +163,6 @@
             $('body').css({
                 overflow: 'scroll'
             });
-
-
             this.$element.css(this.options.containerStyle).addClass(prefix + '-container');
             this.$element.after('<div id="' + prefix + '-loading">' +options.loadingMsg+ '</div><div id="' + prefix + '-message" style="text-align:center;color:#999;"></div>');
 
@@ -224,11 +184,6 @@
                 cols = Math.floor(containerWidth / (colWidth + gutterWidth)),
                 col = Math.max(cols, minCol );
 
-            /*if ( !maxCol ) {
-                return col;
-            } else {
-                return col > maxCol ? maxCol : col;
-            }*/
             return !maxCol ? col : (col > maxCol ? maxCol : col);
         },
 
@@ -428,7 +383,6 @@
             }
         },
 
-
         /*
          * resume ajax request
          */
@@ -488,13 +442,11 @@
             });
         },
 
-
         /**
          * handle response
          * @param {Object} data
          * @param {Function} callback
          */
-
         _handleResponse: function(data, callback) {
             var self = this,
                 options = this.options,
@@ -570,7 +522,6 @@
             });*/
         },
 
-
         /*
          * do scroll
          */
@@ -582,7 +533,6 @@
                 if ( scrollTimer ) {
                     clearTimeout(scrollTimer);
                 }
-
                 scrollTimer = setTimeout(function() {
                     //self._debug('event', 'scrolling ...');
                     self._scroll();
@@ -590,13 +540,9 @@
             });
         },
 
-        /*
-         * resize
-         */
         _resize: function() {
             var cols = this.cols,
                 newCols = this._getColumns(); // new columns
-
 
             if ( newCols !== cols || this.options.align !== 'left' ) {
                 //this._debug('event', 'resizing ...');
@@ -607,10 +553,6 @@
             }
         },
 
-
-        /*
-         * do resize
-         */
         _doResize: function() {
             var self = this,
                 resizeTimer;

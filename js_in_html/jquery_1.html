@@ -10,6 +10,10 @@
             <li>哈哈，这是第二个测试文件</li>
             <li>哈哈，这是第二个测试文件</li>
         </ul>
+        <ul class="test_3">
+            <li>哈哈，这是第二个测试文件</li>
+            <li>哈哈，这是第二个测试文件</li>
+        </ul>
         <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <script>
             window.onload=function(){
@@ -24,6 +28,12 @@
                 console.log(dom_test_2); 
                 console.log($(dom_test_2)); //translate the real dom to JQuery dom
                 console.log($(dom_test_2)==$test_2); //False;
+            })
+            $().ready(function(){
+                //jquery链式操作
+                $(".test_3")
+                    .css({"backgroundColor":"#ccc","font-weight":"900"})
+                    .css("border","1px solid rgba(200,0,200,0.4)");
             })
         </script>
     </body>

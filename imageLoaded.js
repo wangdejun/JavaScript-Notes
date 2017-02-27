@@ -47,10 +47,8 @@
             if ( img.src === BLANK || $.inArray( img, loaded ) !== -1 ) {
                 return;
             }
-
             // store element in loaded images array
             loaded.push( img );
-
             // keep track of broken and properly loaded images
             if ( isBroken ) {
                 broken.push( img );

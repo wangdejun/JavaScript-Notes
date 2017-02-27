@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>JQuery_1_exercise</title>
+    </head>
+    <body>
+        <div class="test_1">
+            哈哈，这是一个测试文件
+        </div>
+        <ul class="test_2">
+            <li>哈哈，这是第二个测试文件</li>
+            <li>哈哈，这是第二个测试文件</li>
+        </ul>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            window.onload=function(){
+                alert("Hello,window.onload")//尽管放在前边，但是会先执行window.onload(){};
+            }
+            $(document).ready(function(){alert("HEllo,document.ready")});
+
+            $(document).ready(function(){
+                var $test_2 = $(".test_2");
+                console.log($test_2);//jquery DOM
+                var dom_test_2 = $test_2[0];//Real DOM
+                console.log(dom_test_2); 
+                console.log($(dom_test_2)); //translate the real dom to JQuery dom
+                console.log($(dom_test_2)==$test_2); //False;
+            })
+        </script>
+    </body>
+</html>

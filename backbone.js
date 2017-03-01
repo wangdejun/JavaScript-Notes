@@ -273,12 +273,8 @@
   _.extend(Backbone, Events);
 
 
-
-
-
 //Backbone.Model
 //-------------
-
 //frequently representing a row in a table in a database on your server.
 //
 
@@ -474,19 +470,8 @@ _.extend(Model.prototype,Events,{
 		  //Ensure attributes are restored during synchronous saves;
 		  
 	  }
-
-
-
 	}
-
-
-	
 })
-
-
-
-
-
 
 })
 

@@ -6,8 +6,7 @@ var users = [
 
 var names = _.chain(users).map((user)=>{
 	return user.user;
-}).join(",")
-  .value();
+}).join(",").value();
 
 console.log(names);
 

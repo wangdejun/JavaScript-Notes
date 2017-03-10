@@ -12,20 +12,21 @@
 		<script>
             $(window).on("load",function(){
                 console.log("window is loaded!");
-				// 简单的一句代码
-				var date = new Date(); //获取一个时间对象
+				var date = new Date();
 				console.log(date.getTime());
             })
 		</script>
         <script>
             $(document).ready(function(){
                 console.log("document ready");
-				var date_1 = new Date(); //获取一个时间对象
+				var date_1 = new Date();
 				console.log(date_1.getTime())
             })
 		</script>
 
         <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"/>
+		<!--如下代码是一个几乎不能能加载的Js,这不会block掉document.read()的执行，
+			但是会block掉window.on("load",function(){})的执行-->
         <!--<script language="javascript" src="http://chat8.live800.com/live800/chatClient/monitor.js?jid=1277675953&companyID=711668&configID=150129&codeType=custom"></script>-->
 		<style>
 		 	#results li.pass{

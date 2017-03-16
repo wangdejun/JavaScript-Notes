@@ -1,6 +1,6 @@
-// 通过function 的 prototype 扩展 Funcition作为构造函数的方法addMethod的方法
-
-Function.prototype.addMethod=function(name,fn){
+// 通过Function 的 prototype 扩展 Funcition作为构造函数的方法addMethod的方法
+Function.prototype.addMethod = function(name,fn){
+	// 将fn赋值给this
 	this[name]=fn;
 	// 返回 this就是返回这个方法
 	return this;

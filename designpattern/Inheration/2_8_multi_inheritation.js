@@ -1,10 +1,6 @@
-
-
 /**
  * 多继承
  */
-
-
 
 var mix = function(){
 	var i = 1,

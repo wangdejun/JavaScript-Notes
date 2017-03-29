@@ -1,14 +1,15 @@
 /**
- *  #立即执行并且销毁函数
+ *  #立即执行并且销毁函数,varialbe
  * -------------------
  * (function(){})()
- * 
+ *
  */
 
 (function(name){console.log(name)})()
 //output:undefined
 
-(function(name){console.log(name)})("name")
+(function(name){
+    console.log(name)})("name")
 //output:name
 (function(name){console.log(name)})("name","wangdejun")
 //output:name,

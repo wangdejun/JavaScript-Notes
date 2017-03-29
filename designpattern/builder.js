@@ -7,7 +7,7 @@ var Human = function(param){
  *人类原型方法
  *------------------
  * getSkill()获取技能
- * getHobby()获取爱好
+ * getHobby()获取gg爱好
  */
 
 Human.protype = {
@@ -90,15 +90,3 @@ console.log('2-----------')
 console.log(person1.skill);
 console.log(person1.name.FirstName);
 console.log(person1.work.workDesc);
-
-
-
-
-
-
-
-
-
-
-
-

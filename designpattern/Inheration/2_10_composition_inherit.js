@@ -2,15 +2,17 @@
  * 组合式继承
  * @param {[type]} name [description]
  */
+
 function SuperClass(name){
 	// 值类型公有属性
 	this.name = name;
 	// 引用类型公有属性
-	this.books = ["html","css","Javascript"]
+	this.books = ["html","css","Javascript"];
 }
 
 SuperClass.prototype.getName = function(){
-	console.log(this.name);
+	  console.log(this.name);
+    return this.name;
 }
 
 //声明子类
@@ -28,5 +30,4 @@ SubClass.prototype.getTime = function(){
 var instance1 = new SubClass("js book",2014);
 instance1.books.push("设计模式")
 console.log(instance1.books);
-// instance1.getName();
 instance1.getTime();

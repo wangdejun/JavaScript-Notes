@@ -5,7 +5,8 @@ function(req,res){
 		if(pathname === routes[0]){
 			var action = routes[1];
 			action(req,res);
-			return;
+			  return;
+
 		}
 	}
 	handle404(req,res);

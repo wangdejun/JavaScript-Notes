@@ -8,4 +8,5 @@ CREATE TABLE Persons
     Address varchar(255),
     City varchar(255)
 )
+
 ```

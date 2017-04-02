@@ -2,14 +2,13 @@
 var Human = function(param){
 	this.skill = param && param.skill || "保密";
 	this.hobby = param && param.hobby || "保密";
-}
+};
 /*
  *人类原型方法
  *------------------
  * getSkill()获取技能
  * getHobby()获取gg爱好
  */
-
 Human.protype = {
 	getSkill:function(){
 		return this.skill;
@@ -17,7 +16,7 @@ Human.protype = {
 	getHobby:function(){
 		return this.hobby;
 	}
-}
+};
 //实例化姓名类
 var Named = function(name){
 	var that = this;

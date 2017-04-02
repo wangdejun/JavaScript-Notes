@@ -5,7 +5,7 @@
 		var x3=12;
 		return function(){
 			console.log(x3);
-			var x4 = 4444444;
+			  var x4 = 4;
 			return function(){
 				return x4;
 			}

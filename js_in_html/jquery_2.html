@@ -49,19 +49,22 @@
 
         <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <script>
-            $(".level1>a").click(function(){
-                //一行链式法则的operation实现导航栏。
-                //添加current class
-                $(this).addClass("current")
-                        //兄弟元素显示
-                       .next().show()
-                       //父亲的兄弟元素（不在本分支）去掉currentClass
-                       .parent().siblings().children("a").removeClass("current")
-                       //next()隐藏
-                       .next().hide();
-                //返回false
-                return false;
+            $(function(){
+                $(".level1>a").click(function(){
+                    //一行链式法则的operation实现导航栏。
+                    //添加current class
+                    $(this).addClass("current")
+                            //兄弟元素显示
+                        .next().show()
+                        //父亲的兄弟元素（不在本分支）去掉currentClass
+                        .parent().siblings().children("a").removeClass("current")
+                        //next()隐藏
+                        .next().hide();
+                    //返回false
+                    return false;
+                })
             })
+
         </script>
     </body>
 </html>

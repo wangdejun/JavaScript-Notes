@@ -1,7 +1,8 @@
+//构造函数在call的同时，创建内部私有成员变量，this.intro
 var Basketball = function(){
 	this.intro = "篮球盛行于美国"
 }
-
+//原型上添加方法
 Basketball.prototype = {
 	getMember:function(){
 		console.log('篮球运动需要5个人');
@@ -11,9 +12,11 @@ Basketball.prototype = {
 	}
 };
 
+
 var Football = function(){
 	this.intro = "足球盛行于世界"
 }
+
 Football.prototype = {
 	getMember:function(){
 		console.log('足球运动需要11个人');
@@ -26,6 +29,7 @@ Football.prototype = {
 var Tennis = function(){
 	this.intro = "每年有很多系列网球公开赛";
 }
+
 Tennis.prototype = {
 	getMember:function(){
 		console.log('网球运动需要1个人');
@@ -37,6 +41,8 @@ Tennis.prototype = {
 		console.log("网球很小");
 	}
 };
+
+//创建工厂，按照传入参数的不同，生产出来不同的对象
 var SportsFactory = function(name){
 	switch (name) {
 		case 'NBA':

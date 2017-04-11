@@ -42,7 +42,7 @@ Tennis.prototype = {
 	}
 };
 
-//创建工厂，按照传入参数的不同，生产出来不同的对象
+//创建工厂函数，按照传入参数的不同，生产出来不同的对象
 var SportsFactory = function(name){
 	switch (name) {
 		case 'NBA':
@@ -89,14 +89,4 @@ console.log(login.name)
 
 var newlogin = new LoginAndSignFactory("prompt")
 console.log(newlogin.name)
-
-
-
-
-
-
-
-
-
-
 

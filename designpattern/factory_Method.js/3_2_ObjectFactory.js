@@ -1,5 +1,5 @@
 // define a constructor function ,and return the object
-
+//创建一个构造函数，并且返回对象
 function createBook(name,time,type){
 	var o = new Object();
 	o.name = name;

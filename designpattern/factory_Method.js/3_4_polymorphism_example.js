@@ -1,3 +1,4 @@
+// 多态,本例中是传入通过参数数组的长度来返回不同的函数实现的多态polymorphism
 function Add(){
 	function zero(){
 		return 10;
@@ -31,8 +32,12 @@ console.log(a.add(1))
 console.log(a.add(1,2))
 
 
+
+// 多态,本例中是传入通过参数数组的长度来返回不同的函数实现的多态polymorphism
+// 项目有可以实现多态的地方，单向关注，与多项关注
+
 function follow(csuid,csuname,btn){
-	function followonly(csuid, csuname){
+	var followonly = function(csuid, csuname){
 		if (!login){
 			$('#spmodal h4', window.parent.document).html(gettext('Please sign in'));
 			$('#spmsg', window.parent.document).html(gettext("Join XXX to follow ")+csuname+gettext("'s closet!"));
@@ -46,7 +51,7 @@ function follow(csuid,csuname,btn){
 		$('#'+csuid).addClass('disabled').attr('disable', 'disable');
 	}
 
-	function followbtn(csuid, csuname, btn){
+	var followbtn = function(csuid, csuname, btn){
 		// Global变量获取btndom
 	    rframe_follow_btn = btn;
 	    if (!login) {
@@ -65,14 +70,15 @@ function follow(csuid,csuname,btn){
 	    rframe_follow_btn.attr('disabled', true);
 	}
 
+
 	var args = arguments,
 	var len = arguments.length;
 
 	switch(len){
 		case 2:
-			return this.followonly(csuid, csuname);
+			return followonly(csuid, csuname);
 		case 3:
-			return this.followbtn(csuid, csuname, btn);
+			return followbtn(csuid, csuname, btn);
 	}
 }
 

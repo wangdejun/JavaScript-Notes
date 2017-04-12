@@ -10,6 +10,7 @@ function Add(){
 	function two(num1,num2){
 		return num1+num2;
 	}
+	
 	this.add = function(){
 		var arg = arguments,
 			len = arguments.length;

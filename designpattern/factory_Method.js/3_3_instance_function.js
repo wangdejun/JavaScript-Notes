@@ -5,6 +5,13 @@ var essay = (function(objr){
 	return objr
 })({"name":"content","say":"hello"})
 
-//立即执行函数，并且穿进去一个对象
+//立即执行函数，并且pass a object to the function as a instant funciton
 
 console.log(essay)
+
+
+//执行函数的两种方式；
+//第一种：eval(script)
+eval("scriprt");
+//第二种:立即执行函数
+(function(){})();

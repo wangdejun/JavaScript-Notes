@@ -17,19 +17,20 @@ string CensorString1(string text,string remove){
 
 /**
  * we can also do the same thing by using the .find and .sustr method from the string class
+ * ----------------------------------------------------------------------------------------
  */
-string CensorString2(string text,string remove){
+string CensorString2(string text, string remove){
 	int pos;
 	string result = text;
 
-	for(int i=0;i<remove.length();i++){
+	for(int i=0; i<remove.length(); i++){
 		while(true){
 			pos = result.find(remove[i]);
-			if(pos== string::npos){
+			if(pos == string::npos){
 				break;
 			}else{
-				result = result.substr(0,pos)+result.substr(pos+1);
-			}
+				result = result.substr(0, pos) + result.substr(pos + 1);
+			} 
 		}
 	}
 	return result;
@@ -38,6 +39,7 @@ string CensorString2(string text,string remove){
 /**
  * To write it so that we modify the original string rather than returning a new string ,we
  * could do the following
+ * ----------------------------------------------------------------------------------------
  */
 void CensorString3(string &text,string remove){
 	for(int i=0;i<remove.length();i++){
@@ -50,6 +52,7 @@ void CensorString3(string &text,string remove){
 
 /**
  * Files and Structs
+ * ------------------
  */
 struct statsT{
 	int low;

@@ -1,7 +1,7 @@
 ///设置cookie   
 ///cookie名字，值，时效时间
 function setCookie(NameOfCookie, value, expiredays){
-    var ExpireDate = new Date ();   
+    var ExpireDate = new Date ();
     ExpireDate.setTime(ExpireDate.getTime() + (expiredays * 24 * 3600 * 1000));
     document.cookie = NameOfCookie + "=" + escape(value) + ((expiredays == null) ? "" : "; expires=" + ExpireDate.toGMTString());   
 }   
@@ -12,10 +12,10 @@ function getCookie(NameOfCookie){
         var begin = document.cookie.indexOf(NameOfCookie+"=");   
         if (begin != -1){
             begin += NameOfCookie.length+1;   
-            var end = document.cookie.indexOf(";", begin);   
-            if (end == -1) end = document.cookie.length;   
+            var end = document.cookie.indexOf(";", begin);
+            if (end == -1) end = document.cookie.length;
             return unescape(document.cookie.substring(begin, end)); 
-        }   
+        }
     }
     return null;
 }

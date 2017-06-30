@@ -22,3 +22,5 @@ var Book_2 = function(id, name, price){
 
 var book_2 = Book_2(112,"The Ocean",1233.1);
 console.log(book_2);
+//This is a comment edited by spcacemaces;
+console.log(book_2);

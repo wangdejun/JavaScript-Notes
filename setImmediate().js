@@ -1,11 +1,10 @@
-
 // process.nextTick(function(){
-// 	console.log("延迟执行");
-// });
+// 	console.log("延迟执行")
+// })
 // console.log("正常执行")
 
 // setImmediate(function(){
-// 	console.log("延迟执行2");
+// 	console.log("延迟执行2")
 // })
 // console.log("正常执行2")
 

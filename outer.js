@@ -13,3 +13,4 @@ function outer(){
 }
 
 outer()
+console.log("wangdejun")

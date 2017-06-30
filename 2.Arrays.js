@@ -8,8 +8,10 @@ console.log(numbers.length);
 var a = numbers.push("four");
 console.log(a);
 console.log(numbers);
+console.log(numbers);
+
 var b = numbers.pop()
-console.log(b);
+
 console.log(numbers);
 
 var c = numbers.shift();

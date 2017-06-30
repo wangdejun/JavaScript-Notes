@@ -7,6 +7,7 @@ var pet = function(name) {
   //返回这个内部函数，从而将其暴露在外部函数作用域
   return getName;               
 };
+
 myPet = pet("Vivie");
 console.log(myPet()); 
 

@@ -1,3 +1,5 @@
+"use strict"
+
 //Book作为构造函数存在
 var Book = function(id, bookname, price){
 	this.id = id;

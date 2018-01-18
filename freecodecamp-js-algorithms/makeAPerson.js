@@ -3,7 +3,6 @@
  * Make a Person
  * @param {String} firstAndLast 
  */
-
 var Person = function(firstAndLast) {
     // Complete the method below and implement the others similarly
     var fullArr = firstAndLast.split(' ');

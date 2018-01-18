@@ -58,3 +58,40 @@ function uniteUnique(arr1, arr2, arr3) {
 
    // test here
 console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+
+
+function uniteUnique1(arr1, arr2, arr3) {
+    var newArr;
+    // Convert the arguments object into an array
+    // 把arguments 对象 转成数组，使用Array.prototype.slice.call(argument)
+    var args = Array.prototype.slice.apply(arguments);
+    console.log("After the apply----");
+    console.log(args);
+    // Use reduce function to flatten the array
+    // 使用reduce方法拍平数组
+    newArr = args.reduce(function (arrA, arrB) {
+    // Apply filter to remove the duplicate elements in the array；
+    // 使用filter 方法移除数组中的duplicate elements；
+        return arrA.concat(arrB);
+    });
+
+    var smallArr = [];
+    smallArr.push(newArr[0]);
+    for(var i=0; i<newArr.length; i++){    
+        var flag = true;
+        for(var j=0; j<smallArr.length; j++){
+            if(newArr[i] == smallArr[j]){
+                flag = false;
+                break;
+            }
+        }
+        if (flag){
+            console.log(smallArr.constructor.toString());
+            smallArr.push(newArr[i]);
+        }
+    }
+    return smallArr;
+   }
+
+   // test here
+console.log(uniteUnique1([1, 3, 2], [5, 2, 1, 4], [2, 1]));

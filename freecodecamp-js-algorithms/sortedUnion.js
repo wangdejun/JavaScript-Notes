@@ -25,3 +25,36 @@ function uniteUnique( arr ) {
 }
 
 console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]))
+
+
+/**
+ * second method
+ * uniteUnique
+ * key method:
+ * args.reduce(function(arrA,arrB){
+ * return arrA.concat(arrB.filter(function(i){
+ *  return arrA.indexOf(i)===-1;
+ * }))
+ * })
+ */
+function uniteUnique(arr1, arr2, arr3) {
+    var newArr;
+    // Convert the arguments object into an array
+    // 把arguments 对象 转成数组，使用Array.prototype.slice.call(argument)
+    var args = Array.prototype.slice.apply(arguments);
+    console.log("After the apply")
+    console.log(args);
+    // Use reduce function to flatten the array
+    // 使用reduce方法拍平数组
+    newArr = args.reduce(function (arrA, arrB) {
+    // Apply filter to remove the duplicate elements in the array；
+    // 使用filter 方法移除数组中的duplicate elements；
+    return arrA.concat(arrB.filter( function(i) {
+            return arrA.indexOf(i) === -1;
+        }));
+    });
+        return newArr;
+   }
+
+   // test here
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));

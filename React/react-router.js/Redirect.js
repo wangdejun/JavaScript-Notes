@@ -8,7 +8,9 @@ import generatePath from "./generatePath";
 /**
  * The public API for updating the location programmatically
  * with a component.
+ * 用一个组件自然地Update/location;
  */
+
 class Redirect extends React.Component {
   static propTypes = {
     computedMatch: PropTypes.object, // private, from <Switch>

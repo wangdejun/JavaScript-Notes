@@ -32,7 +32,7 @@ class Switch extends React.Component {
     );
   }
 
-  //call render() method
+  // call render() method
   render() {
     const { route } = this.context.router;
     const { children } = this.props;

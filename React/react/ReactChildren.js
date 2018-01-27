@@ -83,12 +83,7 @@ function releaseTraverseContext(traverseContext) {
  * @param {?*} traverseContext Used to pass information throughout the traversal process.
  * @return {!number} The number of children in this subtree.
  */
-function traverseAllChildrenImpl(
-  children,
-  nameSoFar,
-  callback,
-  traverseContext,
-) {
+function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
   const type = typeof children;
 
   if (type === 'undefined' || type === 'boolean') {
@@ -116,9 +111,7 @@ function traverseAllChildrenImpl(
   }
 
   if (invokeCallback) {
-    callback(
-      traverseContext,
-      children,
+    callback( traverseContext, children,
       // If it's the only child, treat the name as if it was wrapped in an array
       // so that it's consistent if the number of children grows.
       nameSoFar === '' ? SEPARATOR + getComponentKey(children, 0) : nameSoFar,
@@ -147,6 +140,7 @@ function traverseAllChildrenImpl(
     if (typeof iteratorFn === 'function') {
       if (__DEV__) {
         // Warn about using Maps as children
+        // 警告使用Map作为children
         if (iteratorFn === children.entries) {
           warning(
             didWarnAboutMaps,
@@ -165,12 +159,7 @@ function traverseAllChildrenImpl(
       while (!(step = iterator.next()).done) {
         child = step.value;
         nextName = nextNamePrefix + getComponentKey(child, ii++);
-        subtreeCount += traverseAllChildrenImpl(
-          child,
-          nextName,
-          callback,
-          traverseContext,
-        );
+        subtreeCount = subtreeCount + traverseAllChildrenImpl(child, nextName, callback, traverseContext);
       }
     } else if (type === 'object') {
       let addendum = '';
@@ -181,12 +170,8 @@ function traverseAllChildrenImpl(
           ReactDebugCurrentFrame.getStackAddendum();
       }
       const childrenString = '' + children;
-      invariant(
-        false,
-        'Objects are not valid as a React child (found: %s).%s',
-        childrenString === '[object Object]'
-          ? 'object with keys {' + Object.keys(children).join(', ') + '}'
-          : childrenString,
+      invariant( false, 'Objects are not valid as a React child (found: %s).%s',
+        childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString,
         addendum,
       );
     }
@@ -212,9 +197,7 @@ function traverseAllChildrenImpl(
  * @return {!number} The number of children in this subtree.
  */
 function traverseAllChildren(children, callback, traverseContext) {
-  if (children == null) {
-    return 0;
-  }
+  if (children == null) { return 0; }
 
   return traverseAllChildrenImpl(children, '', callback, traverseContext);
 }

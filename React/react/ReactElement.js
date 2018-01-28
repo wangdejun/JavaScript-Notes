@@ -152,7 +152,6 @@ const ReactElement = function(type, key, ref, self, source, owner, props) {
       Object.freeze(element);
     }
   }
-
   return element;
 };
 
@@ -192,8 +191,7 @@ export function createElement(type, config, children) {
     }
   }
 
-  // Children can be more than one argument, and those are transferred onto
-  // the newly allocated props object.
+  // Children can be more than one argument, and those are transferred onto the newly allocated props object.
   const childrenLength = arguments.length - 2;
   if (childrenLength === 1) {
     props.children = children;
@@ -238,19 +236,12 @@ export function createElement(type, config, children) {
       }
     }
   }
-  return ReactElement(
-    type,
-    key,
-    ref,
-    self,
-    source,
-    ReactCurrentOwner.current,
-    props,
-  );
+  return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
 }
 
 /**
  * Return a function that produces ReactElements of a given type.
+ * 返回一个函数，这个函数按照给定类型生产ReactElements;
  * See https://reactjs.org/docs/react-api.html#createfactory
  */
 export function createFactory(type) {
@@ -265,37 +256,29 @@ export function createFactory(type) {
 }
 
 export function cloneAndReplaceKey(oldElement, newKey) {
-  const newElement = ReactElement(
-    oldElement.type,
-    newKey,
-    oldElement.ref,
-    oldElement._self,
-    oldElement._source,
-    oldElement._owner,
-    oldElement.props,
-  );
-
+  const newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props );
   return newElement;
 }
 
 /**
  * Clone and return a new ReactElement using element as the starting point.
+ * 拷贝ReactElement
  * See https://reactjs.org/docs/react-api.html#cloneelement
  */
+
 export function cloneElement(element, config, children) {
   let propName;
-
   // Original props are copied
+  // 拷贝原始属性
   const props = Object.assign({}, element.props);
-
   // Reserved names are extracted
+  // 提取保留名字
   let key = element.key;
   let ref = element.ref;
+
   // Self is preserved since the owner is preserved.
   const self = element._self;
-  // Source is preserved since cloneElement is unlikely to be targeted by a
-  // transpiler, and the original source is probably a better indicator of the
-  // true owner.
+  // Source is preserved since cloneElement is unlikely to be targeted by a transpiler, and the original source is probably a better indicator of the true owner.
   const source = element._source;
 
   // Owner will be preserved, unless ref is overridden
@@ -317,10 +300,7 @@ export function cloneElement(element, config, children) {
       defaultProps = element.type.defaultProps;
     }
     for (propName in config) {
-      if (
-        hasOwnProperty.call(config, propName) &&
-        !RESERVED_PROPS.hasOwnProperty(propName)
-      ) {
+      if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
         if (config[propName] === undefined && defaultProps !== undefined) {
           // Resolve default props
           props[propName] = defaultProps[propName];
@@ -330,7 +310,6 @@ export function cloneElement(element, config, children) {
       }
     }
   }
-
   // Children can be more than one argument, and those are transferred onto
   // the newly allocated props object.
   const childrenLength = arguments.length - 2;
@@ -346,6 +325,7 @@ export function cloneElement(element, config, children) {
 
   return ReactElement(element.type, key, ref, self, source, owner, props);
 }
+
 
 /**
  * Verifies the object is a ReactElement.

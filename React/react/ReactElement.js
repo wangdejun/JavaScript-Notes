@@ -74,10 +74,7 @@ function defineRefPropWarningGetter(props, displayName) {
     }
   };
   warnAboutAccessingRef.isReactWarning = true;
-  Object.defineProperty(props, 'ref', {
-    get: warnAboutAccessingRef,
-    configurable: true,
-  });
+  Object.defineProperty(props, 'ref', {get: warnAboutAccessingRef, configurable: true});
 }
 
 /**

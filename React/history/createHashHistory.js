@@ -41,22 +41,14 @@ const createHashHistory = (props = {}) => {
   const canGoWithoutReload = supportsGoWithoutReloadUsingHash();
 
   const { getUserConfirmation = getConfirmation, hashType = "slash" } = props;
-  const basename = props.basename? stripTrailingSlash(addLeadingSlash(props.basename)): "";
+  const basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : "";
 
   const { encodePath, decodePath } = HashPathCoders[hashType];
 
   const getDOMLocation = () => {
     let path = decodePath(getHashPath());
 
-    warning(
-      !basename || hasBasename(path, basename),
-      "You are attempting to use a basename on a page whose URL path does not begin " +
-        'with the basename. Expected path "' +
-        path +
-        '" to begin with "' +
-        basename +
-        '".'
-    );
+    warning(!basename || hasBasename(path, basename), "You are attempting to use a basename on a page whose URL path does not begin " + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
 
     if (basename) path = stripBasename(path, basename);
 
@@ -67,9 +59,7 @@ const createHashHistory = (props = {}) => {
 
   const setState = nextState => {
     Object.assign(history, nextState);
-
     history.length = globalHistory.length;
-
     transitionManager.notifyListeners(history.location, history.action);
   };
 
@@ -82,6 +72,7 @@ const createHashHistory = (props = {}) => {
 
     if (path !== encodedPath) {
       // Ensure we always have a properly-encoded hash.
+      // 保证我们一直有一个正确编码的hash
       replaceHashPath(encodedPath);
     } else {
       const location = getDOMLocation();
@@ -90,9 +81,7 @@ const createHashHistory = (props = {}) => {
       if (!forceNextPop && locationsAreEqual(prevLocation, location)) return; // A hashchange doesn't always == location change.
 
       if (ignorePath === createPath(location)) return; // Ignore this change; we already setState in push/replace.
-
       ignorePath = null;
-
       handlePop(location);
     }
   };
@@ -152,11 +141,14 @@ const createHashHistory = (props = {}) => {
   const initialLocation = getDOMLocation();
   let allPaths = [createPath(initialLocation)];
 
+
+
   // Public interface
   // 公共接口
 
   const createHref = location => "#" + encodePath(basename + createPath(location));
 
+// push
   const push = (path, state) => {
     warning(
       state === undefined,

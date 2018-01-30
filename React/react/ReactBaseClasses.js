@@ -97,19 +97,16 @@ if (__DEV__) {
         'https://github.com/facebook/react/issues/3236).',
     ],
   };
-  const defineDeprecationWarning = function(methodName, info) {
+
+  const defineDeprecationWarning = function (methodName, info) {
     Object.defineProperty(Component.prototype, methodName, {
       get: function() {
-        lowPriorityWarning(
-          false, 
-          '%s(...) is deprecated in plain JavaScript React classes. %s',
-          info[0],
-          info[1],
-        );
+        lowPriorityWarning(false, '%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]);
         return undefined;
-      },
+      }
     });
   };
+
   for (const fnName in deprecatedAPIs) {
     if (deprecatedAPIs.hasOwnProperty(fnName)) {
       defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);

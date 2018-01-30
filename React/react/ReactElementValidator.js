@@ -364,16 +364,10 @@ export function createFactoryWithValidation(type) {
     Object.defineProperty(validatedFactory, 'type', {
       enumerable: false,
       get: function() {
-        lowPriorityWarning(
-          false,
-          'Factory.type is deprecated. Access the class directly ' +
-            'before passing it to createFactory.',
-        );
-        Object.defineProperty(this, 'type', {
-          value: type,
-        });
+        lowPriorityWarning(false, 'Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.');
+        Object.defineProperty(this, 'type', {value: type});
         return type;
-      },
+      }
     });
   }
 

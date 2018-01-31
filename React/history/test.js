@@ -1,9 +1,4 @@
-setImmediate(function(){
-    console.log("setImmediate延迟");
-});
+let props = {'forceRefresh': 12, getUserConfirmation : 12222222, keyLength : 6};
 
-process.nextTick(function(){
-    console.log("nextTick延迟")
-});
-
-console.log("正常执行");
+const {forceRefresh = false, getUserConfirmation = 12, keyLength = 6} = props;
+console.log(getUserConfirmation);

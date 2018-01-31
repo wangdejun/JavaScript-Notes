@@ -58,23 +58,17 @@ class Route extends React.Component {
     if (computedMatch)
         return computedMatch; // <Switch> already computed the match for us // <Switch> 已经为我们计算了匹配
 
-    invariant(
-      router,
-      "You should not use <Route> or withRouter() outside a <Router>//不应该在<Router>之外使用<Route>组件"
-    );
+    invariant(router, "You should not use <Route> or withRouter() outside a <Router>//不应该在<Router>之外使用<Route>组件");
 
     const { route } = router;
     const pathname = (location || route.location).pathname;
 
-    return path
-      ? matchPath(pathname, { path, strict, exact, sensitive })
-      : route.match;
+    return path ? matchPath(pathname, { path, strict, exact, sensitive }) : route.match;
   }
 
   componentWillMount() {
     warning(
-      !(this.props.component && this.props.render),
-      " You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored "
+      !(this.props.component && this.props.render), ' You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored '
       // 告警
     );
 

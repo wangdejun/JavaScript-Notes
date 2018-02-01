@@ -32,9 +32,10 @@ function escape(key) {
 }
 
 /**
- * TODO: Test that a single child and an array with one item have the same key
- * pattern.
+ * TODO: Test that a single child and an array with one item have the same key pattern.
+ * 测试
  */
+
 
 let didWarnAboutMaps = false;
 

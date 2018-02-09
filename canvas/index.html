@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+</head>
+<body>
+    <canvas id="drawing" width='600' height='600' style='border:1px solid #eee'>A drawing of something</canvas>
+    <script>    
+        var drawing = document.getElementById('drawing');
+
+        if(drawing.getContext) {
+            /*var imgURI = drawing.toDataURL("image/png");
+            var image = document.createElement('img');
+            image.src = imgURI;
+            document.body.appendChild(image);*/
+            var context = drawing.getContext('2d');
+/*          context.stokeStyle = 'red';
+            context.fillRect(10, 10, 50, 50);
+            context.fillStyle = 'rgba(0,0,255,0.5)';
+            context.fillRect(30, 30, 50, 50);
+
+            context.clearRect(40,40,10,10);
+*/
+            //context.stokeStyle = '#000';
+            context.beginPath();
+            context.arc(100, 100, 99, 0, 2*Math.PI, false);
+            context.moveTo(194, 100);        
+            context.arc(100, 100, 94, 0,2*Math.PI, false);
+
+            context.translate(133, -33);
+            context.rotate(1);
+
+            context.moveTo(100, 100);
+            context.lineTo(100, 15);
+
+            context.moveTo(100,100);
+            context.lineTo(35,100);
+            context.stroke();
+        }
+    </script>
+</body>
+</html>

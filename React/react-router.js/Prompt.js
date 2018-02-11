@@ -6,6 +6,7 @@ import invariant from "invariant";
  * The public API for prompting the user before navigating away
  * from a screen with a component.
  * Subclass;
+ * 公共API
  */
 
 class Prompt extends React.Component {
@@ -24,7 +25,6 @@ class Prompt extends React.Component {
 
   enable(message) {
     if (this.unblock) this.unblock();
-
     this.unblock = this.context.router.history.block(message);
   }
 
@@ -34,7 +34,7 @@ class Prompt extends React.Component {
       this.unblock = null;
     }
   }
-
+// 生命周期：组件即将挂载
   componentWillMount() {
     invariant(this.context.router, 'You should not use <Prompt> outside a <Router>');
 

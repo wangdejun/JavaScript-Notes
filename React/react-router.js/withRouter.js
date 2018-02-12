@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import hoistStatics from "hoist-non-react-statics";
-import Route from "./Route";
+import React from 'react';
+import PropTypes from 'prop-types';
+import hoistStatics from 'hoist-non-react-statics';
+import Route from './Route';
 
 /**
  * A public higher-order component to access the imperative API

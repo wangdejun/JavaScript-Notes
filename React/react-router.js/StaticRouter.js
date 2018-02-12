@@ -17,7 +17,7 @@ import Router from "./Router";
  * noop()//不做任何事情
  */
 const normalizeLocation = object => {
-  // spreading assignment
+  // 解构赋值
   const { pathname = "/", search = "", hash = "" } = object;
   return {pathname, search: search === '?' ? '' : search, hash: hash === '#' ? '' : hash};
 };
@@ -35,9 +35,14 @@ const stripBasename = (basename, location) => {
   if (!basename) return location;
 
   const base = addLeadingSlash(basename);
-  if (location.pathname.indexOf(base) !== 0) return location;
+  if (location.pathname.indexOf(base) !== 0) {
+    return location;
+  }
 
-  return {...location, pathname: location.pathname.substr(base.length)};
+  return {
+    ...location,
+    pathname: location.pathname.substr(base.length)
+  };
 };
 
 const createLocation = location => typeof location === 'string' ? parsePath(location) : normalizeLocation(location);
@@ -83,14 +88,14 @@ class StaticRouter extends React.Component {
 
   handlePush = location => {
     const { basename, context } = this.props;
-    context.action = "PUSH";
+    context.action = 'PUSH';
     context.location = addBasename(basename, createLocation(location));
     context.url = createURL(context.location);
   };
 
   handleReplace = location => {
     const { basename, context } = this.props;
-    context.action = "REPLACE";
+    context.action = 'REPLACE';
     context.location = addBasename(basename, createLocation(location));
     context.url = createURL(context.location);
   };

@@ -32,7 +32,7 @@ class Router extends React.Component {
     };
   }
 
-  //组件即将挂载的时候：生命周期：
+  // 组件即将挂载的时候：生命周期：
   componentWillMount() {
     const { children, history } = this.props;
     invariant(children === null || React.Children.count(children) === 1, "A <Router> may have only one child element");
@@ -47,7 +47,7 @@ class Router extends React.Component {
     });
   }
 
-  // 【生命周期】接收新的属性
+  // 【生命周期】即将接收新的属性
   componentWillReceiveProps(nextProps) {
     warning(this.props.history === nextProps.history, "You cannot change <Router history>");
   }

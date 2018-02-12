@@ -109,7 +109,7 @@ class Route extends React.Component {
         return children(props);
     }
 
-    if (children && !isEmptyChildren(children)){
+    if (children && !isEmptyChildren(children)) {
         return React.Children.only(children);
     }
     return null;

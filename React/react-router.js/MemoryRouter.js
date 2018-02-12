@@ -9,6 +9,7 @@ import Router from "./Router";
  */
 
 class MemoryRouter extends React.Component {
+  // 静态类型
   static propTypes = {
     initialEntries: PropTypes.array,
     initialIndex: PropTypes.number,

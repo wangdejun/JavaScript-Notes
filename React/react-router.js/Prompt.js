@@ -34,7 +34,7 @@ class Prompt extends React.Component {
       this.unblock = null;
     }
   }
-// 生命周期：组件即将挂载
+// 【生命周期】：组件即将挂载
   componentWillMount() {
     invariant(this.context.router, 'You should not use <Prompt> outside a <Router>');
 

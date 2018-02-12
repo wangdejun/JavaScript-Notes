@@ -35,6 +35,7 @@ class Route extends React.Component {
     router: PropTypes.object.isRequired
   };
   // get children context
+  // 获取子元素上下文；
   getChildContext() {
     return {
       router: {
@@ -51,14 +52,11 @@ class Route extends React.Component {
     match: this.computeMatch(this.props, this.context.router)
   };
 
-  computeMatch(
-    { computedMatch, location, path, strict, exact, sensitive },
-    router
-  ) {
-    if (computedMatch)
+  computeMatch({ computedMatch, location, path, strict, exact, sensitive }, router) {
+    if (computedMatch){
         return computedMatch; // <Switch> already computed the match for us // <Switch> 已经为我们计算了匹配
-
-    invariant(router, "You should not use <Route> or withRouter() outside a <Router>//不应该在<Router>之外使用<Route>组件");
+    }
+    invariant(router, 'You should not use <Route> or withRouter() outside a <Router>//不应该在<Router>之外使用<Route>组件');
 
     const { route } = router;
     const pathname = (location || route.location).pathname;
@@ -72,23 +70,8 @@ class Route extends React.Component {
       // 告警
     );
 
-    warning(
-      !(
-        this.props.component &&
-        this.props.children &&
-        !isEmptyChildren(this.props.children)
-      ),
-      "You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored"
-    );
-
-    warning(
-      !(
-        this.props.render &&
-        this.props.children &&
-        !isEmptyChildren(this.props.children)
-      ),
-      "You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored"
-    );
+    warning(!(this.props.component && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
+    warning(!(this.props.render && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
@@ -114,18 +97,21 @@ class Route extends React.Component {
     const location = this.props.location || route.location;
     const props = { match, location, history, staticContext };
 
-    if (component) 
+    if (component) {
         return match ? React.createElement(component, props) : null;
+    }
 
-    if (render) 
+    if (render) {
         return match ? render(props) : null;
+    }
 
-    if (typeof children === "function") 
+    if (typeof children === 'function') {
         return children(props);
+    }
 
-    if (children && !isEmptyChildren(children))
+    if (children && !isEmptyChildren(children)){
         return React.Children.only(children);
-
+    }
     return null;
   }
 }

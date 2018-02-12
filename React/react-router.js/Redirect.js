@@ -6,8 +6,7 @@ import { createLocation, locationsAreEqual } from "history";
 import generatePath from "./generatePath";
 
 /**
- * The public API for updating the location programmatically
- * with a component.
+ * The public API for updating the location programmatically with a component.
  * 用一个组件自然地Update/location;
  */
 
@@ -31,18 +30,21 @@ class Redirect extends React.Component {
     }).isRequired
   };
 
-  isStatic() {return this.context.router && this.context.router.staticContext;}
+  isStatic() {
+    return this.context.router && this.context.router.staticContext;
+  }
 
   // will mount the Component；
   componentWillMount() {
     invariant(this.context.router, "You should not use <Redirect> outside a <Router>");
     if (this.isStatic()) this.perform();
   }
-  // 已经挂载上去组件了；
+  // 已经挂载上去组件了;
+  // the component have been mounted on;
   componentDidMount() {
     if (!this.isStatic()) this.perform();
   }
-
+  // component have been updated;
   componentDidUpdate(prevProps) {
     const prevTo = createLocation(prevProps.to);
     const nextTo = createLocation(this.props.to);
@@ -65,7 +67,7 @@ class Redirect extends React.Component {
     return to;
   }
 
-  perform(){
+  perform() {
     const { history } = this.context.router;
     const { push } = this.props;
     const to = this.computeTo(this.props);

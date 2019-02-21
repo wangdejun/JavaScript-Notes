@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bfc</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .demo1 {
+            width: 100px;
+            height: 100px;
+            float: left;
+            background: pink
+        }
+        .demo2 {
+            width: 200px;
+            height: 200px;
+            background: blue;
+            display:visible;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <div class="demo1">我是一个左侧浮动元素</div>
+        <div class="demo2">我是一个没有设置浮动, 也没有触发BFC的元素</div>
+    </div>
+</body>
+</html>
+
+
+
+
+

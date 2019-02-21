@@ -12,3 +12,5 @@
 		console.log(a+x)
 	}
 })();
+
+console.log(this)

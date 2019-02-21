@@ -1,0 +1,33 @@
+<html>
+<head>
+    <style>
+        .chart div{
+            font:10px;
+            background:steelblue;
+            text-align:center;
+            padding:3px;
+            margin:1px;
+            color:white;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<div class="chart">
+</div>
+    <script type="text/javascript">
+        const data = [4, 8, 15, 16, 23, 42];
+        var x = d3.scaleLinear()
+            .domain([0, d3.max(data)])
+            .range([0,420]);
+
+        d3.select(".chart")
+            .selectAll("div")
+            .data(data)
+            .enter().append("div")
+            .style("width", function(d){return x(d)+"px"})
+            .text(function(d){return d;})
+
+    </script>
+</body>
+</html>

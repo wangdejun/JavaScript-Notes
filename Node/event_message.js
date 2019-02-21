@@ -2,7 +2,6 @@ const cluster = require('cluster');
 const http = require('http');
 
 if (cluster.isMaster) {
-
     // 跟踪 http 请求
     let numReqs = 0;
     setInterval(() => {
@@ -13,9 +12,8 @@ if (cluster.isMaster) {
     function messageHandler(msg) {
 	if (msg.cmd && msg.cmd === 'notifyRequest') {
 	    numReqs += 1;
-	}
+	    }
     }
-
     // 启动 worker 并监听包含 notifyRequest 的消息
     const numCPUs = require('os').cpus().length;
     for (let i = 0; i < numCPUs; i++) {
@@ -27,7 +25,6 @@ if (cluster.isMaster) {
     }
 
 } else {
-
     // Worker 进程有一个http服务器
     http.Server((req, res) => {
 	    res.writeHead(200);
